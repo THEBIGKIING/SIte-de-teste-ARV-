@@ -1,0 +1,331 @@
+:root {
+    --black: black;
+    --dark-gray: #1b1b1b;
+    --white: white;
+}
+
+/* Assurez que le body et html occupent toute la hauteur */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Le main prend tout l'espace disponible entre le header et le footer */
+main {
+    flex: 1; /* Permet au main de s'étendre pour occuper l'espace restant */
+    padding: 20px;
+ margin-left: 15%; /* Ajoute un espace pour le bouton */
+}
+/* Le footer reste en bas */
+footer {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+    border-radius: 0; /* Supprime les coins arrondis */
+    margin: 0; /* Supprime les marges */
+    width: 100%; /* Assure que le footer occupe toute la largeur */
+    box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+}
+
+/* Global styles */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Empêche le débordement horizontal */
+    font-family: Arial, sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    animation: fadeIn 1s ease-in-out;
+}
+
+header {
+    background-color: var(--dark-gray);
+    text-align: center;
+    padding: 20px;
+}
+
+/* Styles pour la top-bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between; /* Sépare les deux groupes (gauche et droite) */
+    align-items: center;
+    background-color: var(--black);
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px var(--black);
+}
+
+/* Conteneur pour les éléments de gauche */
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacement entre les éléments */
+}
+
+/* Conteneur pour les éléments de droite */
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacement entre les éléments */
+}
+
+/* Logo */
+.logo {
+    height: 40px;
+    border: none;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.search-icon {
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.search-bar {
+    width: 0;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--black);
+    color: var(--white);
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    position: relative;
+}
+
+.search-container.active .search-bar,
+.search-container:hover .search-bar {
+    width: 200px;
+    opacity: 1;
+}
+
+search-container:hover .search-icon {
+    transform: scale(1.2);
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--dark-gray);
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: var(--white);
+    padding-bottom: 5px;
+    margin-top: 0px;
+}
+
+footer {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+    border-radius: 0; /* Supprime les coins arrondis */
+    margin: 0; /* Supprime les marges */
+    width: 100%; /* Assure que le footer occupe toute la largeur */
+    box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+}
+
+/* Styles pour le menu déroulant */
+.dropdown {
+    position: absolute; /* Position relative pour que le menu soit positionné par rapport au bouton */
+}
+
+.dropdown-button {
+    background-color: var(--black); /* Couleur de fond similaire à .nav-box */
+    color: var(--white); /* Couleur du texte */
+    padding: 10px 20px; /* Espacement interne */
+    border: none; /* Supprime les bordures */
+    border-radius: 10px; /* Coins arrondis similaires */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre pour un effet de profondeur */
+    cursor: pointer; /* Change le curseur pour indiquer un bouton cliquable */
+    font-size: 16px; /* Taille du texte */
+    font-weight: bold; /* Texte en gras */
+    transition: background-color 0.3s ease; /* Transition pour un effet au survol */
+}
+
+.dropdown-button:hover {
+    color: var(--dark-gray); /* Change la couleur du texte au survol */
+    background-color: var(--white); /* Change la couleur au survol */
+}
+
+/* Menu déroulant */
+.dropdown-menu {
+    display: none; /* Masque le menu par défaut */
+    position: relative; /* Positionne le menu par rapport au parent .dropdown */
+    top: 100%; /* Place le menu juste en dessous du bouton */
+    left: 0; /* Aligne le menu à gauche */
+    background-color: var(--dark-gray);
+    min-width: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    z-index: 1000;
+    padding: 10px 0;
+    opacity: 1; /* Rendre le menu visible par défaut */
+}
+
+
+.dropdown-menu.visible {
+    display: block; /* Affiche le menu lorsqu'il est visible */
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu a {
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #555;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Affiche le menu au survol */
+}
+
+/* Styles pour l'icône du menu */
+.menu-icon {
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-icon:hover {
+    transform: scale(1.1); /* Agrandit légèrement l'icône au survol */
+}
+
+/* Animation pour l'apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Décale légèrement vers le bas */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Position normale */
+    }
+}
+
+/* Bouton pour fermer le menu */
+.close-menu {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: right;
+    width: 100%;
+}
+
+/* Menu latéral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%; /* Le menu occupe toute la hauteur de l'écran */
+    width: 250px; /* Largeur fixe pour le menu */
+    background-color: var(--dark-gray);
+    color: var(--white);
+    overflow-y: auto; /* Permet le défilement vertical */
+    overflow-x: hidden; /* Désactive le défilement horizontal */
+    transform: translateX(-100%); /* Cache le menu sur le côté gauche */
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.side-menu.open {
+    transform: translateX(0); /* Affiche le menu en le faisant glisser depuis la gauche */
+}
+
+.side-menu ul {
+    list-style: none; /* Supprime les puces */
+    padding: 0; /* Supprime les marges internes */
+    margin: 0; /* Supprime les marges externes */
+    display: flex;
+    flex-direction: column; /* Affiche les éléments en colonne (verticalement) */
+    gap: 10px; /* Ajoute un espacement entre les liens */
+}
+
+.side-menu ul li {
+    padding: 15px;
+    border-bottom: 1px solid #444; /* Séparation entre les liens */
+}
+
+.side-menu ul li a {
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+    text-align: left; /* Aligne le texte à gauche */
+}
+
+.side-menu ul li a:hover {
+    background-color: #555; /* Change la couleur de fond au survol */
+}
+
+/* Personnalisation du bouton de la barre latérale */
+.menu-toggle {
+    position: static;
+    top: 10px; /* Ajustez cette valeur pour aligner le bouton avec "Introduction" */
+    left: 0px; /* Distance depuis le bord gauche */
+    background-color: transparent; /* Enlève le fond */
+    color: var(--white); /* Couleur du texte ou de l'icône */
+    border: 2px solid var(--white); /* Ajoute une bordure blanche */
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 900;
+    font-size: 18px;
+    border-radius: 50%; /* Rend le bouton circulaire */
+    transition: all 0.3s ease; /* Ajoute une transition pour les effets */
+}
+
+.menu-toggle:hover {
+    background-color: var(--white); /* Ajoute un fond blanc au survol */
+    color: var(--dark-gray); /* Change la couleur du texte ou de l'icône */
+    transform: scale(1.1); /* Agrandit légèrement le bouton au survol */
+}
+
+@media (max-width: 768px) {
+    .side-menu {
+        width: 200px;
+    }
+}

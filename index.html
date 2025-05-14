@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arv Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <header>
+    <div class="container">
+        <div class="top-bar">
+            <img src="Logo.webp" alt="Logo" class="logo">
+            <div class="search-container">
+                <img src="search-icon.webp" alt="Search Icon" class="search-icon" aria-label="Ouvrir la barre de recherche">
+                <input type="text" placeholder="Rechercher..." class="search-bar">
+            </div>
+            <img src="menu.webp" alt="Menu" class="menu-icon" aria-label="Ouvrir le menu">
+            <nav class="dropdown-menu">
+                <ul>
+                    <li><a href="achat_revente.html">Achat Revente</a></li>
+                    <li><a href="page2.html">Page 2</a></li>
+                    <li><a href="page3.html">Page 3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <h1>ARV : Achat Revente Spécialisé</h1>
+    <h2>Commencez dès a présent l'achat revente sur vos plateformes préférés.</h2>
+</header>
+
+    
+    <footer>
+        <p>&copy; 2023 Les secrets de l'achat revente. Tous droits réservés.</p>
+    </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const searchContainer = document.querySelector('.search-container');
+    const searchBar = document.querySelector('.search-bar');
+
+    if (searchContainer) {
+        searchContainer.addEventListener('click', (e) => {
+            e.stopPropagation();
+            searchContainer.classList.add('active');
+            searchBar.setAttribute('aria-hidden', 'false');
+            searchBar.setAttribute('aria-expanded', 'true');
+        });
+
+        document.addEventListener('click', () => {
+            searchContainer.classList.remove('active');
+            searchBar.setAttribute('aria-hidden', 'true');
+            searchBar.setAttribute('aria-expanded', 'false');
+        });
+    }
+});
+    
+    // Gestion du menu déroulant
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuIcon = document.querySelector('.menu-icon');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        if (menuIcon && dropdownMenu) {
+            // Afficher ou masquer le menu au clic sur l'icône
+            menuIcon.addEventListener('click', (e) => {
+                e.stopPropagation(); // Empêche la propagation du clic
+                dropdownMenu.classList.toggle('visible');
+            });
+
+            // Cacher le menu si on clique ailleurs
+            document.addEventListener('click', (e) => {
+                if (!menuIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('visible');
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
