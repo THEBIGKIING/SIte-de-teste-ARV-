@@ -2,6 +2,7 @@
     --black: black;
     --dark-gray: #1b1b1b;
     --white: white;
+    --margin: 5%;
 }
 
 /* Assurez que le body et html occupent toute la hauteur */
@@ -16,7 +17,8 @@ html, body {
 main {
     flex: 1; /* Permet au main de s'étendre pour occuper l'espace restant */
     padding: 20px;
- margin-left: 15%; /* Ajoute un espace pour le bouton */
+    margin-left: var(--margin); /* Ajoute un espace pour le bouton */
+    margin-right: var(--margin); /* Ajoute un espace pour le bouton */
 }
 /* Le footer reste en bas */
 footer {
@@ -53,9 +55,26 @@ header {
     justify-content: space-between; /* Sépare les deux groupes (gauche et droite) */
     align-items: center;
     background-color: var(--black);
-    padding: 10px 20px;
+    padding: 10px 20px; /* Ajustez les valeurs pour un espacement uniforme */
+    margin: 0; /* Supprime les marges externes */
+    box-sizing: border-box; /* Inclut le padding dans la largeur et la hauteur */
     border-radius: 15px;
     box-shadow: 0 4px 6px var(--black);
+    border: none; /* Supprime les bordures */
+    height: auto; /* Ajustez la hauteur automatiquement */
+    overflow: hidden; /* Empêche les débordements */
+}
+
+/* Uniformisez la taille des icônes et des images */
+.top-bar img {
+    height: 30px; /* Ajustez la hauteur pour qu'elle soit cohérente */
+    width: auto; /* Conservez les proportions */
+    vertical-align: middle; /* Alignez verticalement les images */
+}
+
+/* Classe pour déplacer l'icône du milieu à droite */
+.top-bar .move-to-right {
+    margin-left: 10px; /* Pousse l'icône vers la droite */
 }
 
 /* Conteneur pour les éléments de gauche */
@@ -74,8 +93,13 @@ header {
 
 /* Logo */
 .logo {
-    height: 40px;
-    border: none;
+    height: 30px; /* Ajustez la hauteur */
+    width: auto; /* Conservez les proportions */
+}
+
+.top-bar .logo {
+    height: 25px; /* Ajustez la hauteur */
+    width: auto; /* Conservez les proportions */
 }
 
 .search-container {
@@ -105,7 +129,7 @@ header {
 
 .search-container.active .search-bar,
 .search-container:hover .search-bar {
-    width: 200px;
+    width: 150px;
     opacity: 1;
 }
 
@@ -180,9 +204,9 @@ footer {
 /* Menu déroulant */
 .dropdown-menu {
     display: none; /* Masque le menu par défaut */
-    position: relative; /* Positionne le menu par rapport au parent .dropdown */
-    top: 100%; /* Place le menu juste en dessous du bouton */
-    left: 0; /* Aligne le menu à gauche */
+    position: absolute; /* Positionne le menu par rapport au parent .dropdown */
+    top: 100px; /* Place le menu juste en dessous du bouton */
+    right: 20px; /* Aligne le menu à gauche */
     background-color: var(--dark-gray);
     min-width: 150px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -302,26 +326,11 @@ footer {
     background-color: #555; /* Change la couleur de fond au survol */
 }
 
-/* Personnalisation du bouton de la barre latérale */
-.menu-toggle {
-    position: static;
-    top: 10px; /* Ajustez cette valeur pour aligner le bouton avec "Introduction" */
-    left: 0px; /* Distance depuis le bord gauche */
-    background-color: transparent; /* Enlève le fond */
-    color: var(--white); /* Couleur du texte ou de l'icône */
-    border: 2px solid var(--white); /* Ajoute une bordure blanche */
-    padding: 10px 15px;
-    cursor: pointer;
-    z-index: 900;
-    font-size: 18px;
-    border-radius: 50%; /* Rend le bouton circulaire */
-    transition: all 0.3s ease; /* Ajoute une transition pour les effets */
-}
-
-.menu-toggle:hover {
-    background-color: var(--white); /* Ajoute un fond blanc au survol */
-    color: var(--dark-gray); /* Change la couleur du texte ou de l'icône */
-    transform: scale(1.1); /* Agrandit légèrement le bouton au survol */
+/* Styles pour l'image du menu latéral */
+.side-menu img {
+    width: 100%; /* L'image occupe toute la largeur du menu */
+    height: auto; /* Conserve les proportions de l'image */
+    border-radius: 0; /* Supprime les coins arrondis */
 }
 
 @media (max-width: 768px) {

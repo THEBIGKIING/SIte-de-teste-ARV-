@@ -8,11 +8,12 @@
 </head>
 <body>
       <header>
-    <div class="top-bar">
-        <div class="top-bar-left">
+<div class="top-bar">
+    <div class="top-bar-left">
         <a href="index.html"> <img src="Logo.webp" alt="Logo" class="logo"></a>
-        <button class="menu-toggle" aria-label="Ouvrir le sommaire">☰</button>
-     <!-- Menu latéral -->
+        <a href="#" class="menu-toggle" aria-label="Ouvrir le sommaire">
+            <img src="summary-icon.webp" alt="Sommaire" class="summary-icon">
+        </a>     <!-- Menu latéral -->
     <nav class="side-menu" aria-label="Menu de navigation">
         <button class="close-menu" aria-label="Fermer le sommaire">✖</button> <!-- Bouton pour fermer -->
         <ul>
@@ -27,17 +28,17 @@
             <li><a href="#conclusion">Conclusion</a></li>
         </ul>
     </nav>
-        </div>
+    </div>
     <div class="top-bar-right">
         <div class="search-container">
             <img src="search-icon.webp" alt="Search Icon" class="search-icon" aria-label="Ouvrir la barre de recherche">
             <input type="text" placeholder="Rechercher..." class="search-bar">
         </div>
-        <img src="menu.webp" alt="Menu" class="menu-icon" aria-label="Ouvrir le menu">
+    <img src="menu.webp" alt="Menu" class="menu-icon" aria-label="Ouvrir le menu">
     <nav class="dropdown-menu" aria-label="Menu déroulant">
         <ul>
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="achat_revente.html">Achat Revente</a></li>
+            <li><a href="Achat_revente.html">Achat Revente</a></li>
         </ul>
     </nav>
     </div>
@@ -244,6 +245,17 @@
                 document.addEventListener('click', () => {
                     dropdownMenu.classList.remove('visible'); // Retire la classe "visible"
                 });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const topBar = document.querySelector('.top-bar');
+            const icons = topBar.querySelectorAll('.search-container, .menu-icon, .logo'); // Sélectionne les icônes dans la top-bar
+
+            if (icons.length % 2 !== 0) {
+                // Si le nombre d'icônes est impair
+                const middleIndex = Math.floor(icons.length / 2); // Trouve l'index de l'icône du milieu
+                icons[middleIndex].classList.add('move-to-right'); // Ajoute la classe pour déplacer l'icône
             }
         });
 </script>

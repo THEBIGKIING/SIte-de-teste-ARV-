@@ -8,23 +8,24 @@
 </head>
 <body>
       <header>
-    <div class="container">
-        <div class="top-bar">
-            <img src="Logo.webp" alt="Logo" class="logo">
-            <div class="search-container">
-                <img src="search-icon.webp" alt="Search Icon" class="search-icon" aria-label="Ouvrir la barre de recherche">
-                <input type="text" placeholder="Rechercher..." class="search-bar">
-            </div>
-            <img src="menu.webp" alt="Menu" class="menu-icon" aria-label="Ouvrir le menu">
-            <nav class="dropdown-menu">
-                <ul>
-                    <li><a href="achat_revente.html">Achat Revente</a></li>
-                    <li><a href="page2.html">Page 2</a></li>
-                    <li><a href="page3.html">Page 3</a></li>
-                </ul>
-            </nav>
-        </div>
+<div class="top-bar">
+    <div class="top-bar-left">
+            <a href="index.html"> <img src="Logo.webp" alt="Logo" class="logo"></a>
     </div>
+    <div class="top-bar-right">
+        <div class="search-container">
+            <img src="search-icon.webp" alt="Search Icon" class="search-icon" aria-label="Ouvrir la barre de recherche">
+            <input type="text" placeholder="Rechercher..." class="search-bar">
+        </div>
+        <img src="menu.webp" alt="Menu" class="menu-icon" aria-label="Ouvrir le menu">
+        <nav class="dropdown-menu" aria-label="Menu déroulant">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="Achat_revente.html">Achat Revente</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
     <h1>ARV : Achat Revente Spécialisé</h1>
     <h2>Commencez dès a présent l'achat revente sur vos plateformes préférés.</h2>
 </header>
@@ -36,43 +37,50 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-    const searchContainer = document.querySelector('.search-container');
-    const searchBar = document.querySelector('.search-bar');
+        // Gestion de la barre de recherche
+        const searchContainer = document.querySelector('.search-container');
+        const searchBar = document.querySelector('.search-bar');
 
-    if (searchContainer) {
-        searchContainer.addEventListener('click', (e) => {
-            e.stopPropagation();
-            searchContainer.classList.add('active');
-            searchBar.setAttribute('aria-hidden', 'false');
-            searchBar.setAttribute('aria-expanded', 'true');
-        });
+        if (searchContainer) {
+            searchContainer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                searchContainer.classList.add('active');
+                searchBar.setAttribute('aria-hidden', 'false');
+                searchBar.setAttribute('aria-expanded', 'true');
+            });
 
-        document.addEventListener('click', () => {
-            searchContainer.classList.remove('active');
-            searchBar.setAttribute('aria-hidden', 'true');
-            searchBar.setAttribute('aria-expanded', 'false');
-        });
-    }
-});
-    
-    // Gestion du menu déroulant
-    document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('click', () => {
+                searchContainer.classList.remove('active');
+                searchBar.setAttribute('aria-hidden', 'true');
+                searchBar.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        // Gestion du menu déroulant
         const menuIcon = document.querySelector('.menu-icon');
         const dropdownMenu = document.querySelector('.dropdown-menu');
 
         if (menuIcon && dropdownMenu) {
-            // Afficher ou masquer le menu au clic sur l'icône
             menuIcon.addEventListener('click', (e) => {
                 e.stopPropagation(); // Empêche la propagation du clic
-                dropdownMenu.classList.toggle('visible');
+                dropdownMenu.classList.toggle('visible'); // Affiche ou masque le menu
             });
 
-            // Cacher le menu si on clique ailleurs
             document.addEventListener('click', (e) => {
                 if (!menuIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.classList.remove('visible');
+                    dropdownMenu.classList.remove('visible'); // Masque le menu si on clique ailleurs
                 }
             });
+        }
+
+        // Gestion des icônes dans la top-bar
+        const topBar = document.querySelector('.top-bar');
+        const icons = topBar.querySelectorAll('.search-container, .menu-icon, .logo'); // Sélectionne les icônes dans la top-bar
+
+        if (icons.length % 2 !== 0) {
+            // Si le nombre d'icônes est impair
+            const middleIndex = Math.floor(icons.length / 2); // Trouve l'index de l'icône du milieu
+            icons[middleIndex].classList.add('move-to-right'); // Ajoute la classe pour déplacer l'icône
         }
     });
 </script>
